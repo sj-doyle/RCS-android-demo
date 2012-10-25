@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:id="@+id/addContactMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dip"
+        android:gravity="center"
+        android:text="@string/addContactMesssage"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/addContactDisplayNamePrompt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/addContactMessage"
+        android:layout_marginTop="80dip"
+        android:layout_marginLeft="10dip"
+        android:text="@string/addContactDisplayName"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/addContactDisplayNameInput"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/addContactDisplayNamePrompt"
+        android:layout_alignBottom="@+id/addContactDisplayNamePrompt"
+        android:layout_toRightOf="@+id/addContactDisplayNamePrompt"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+    
+    <TextView
+        android:id="@+id/addContactUriPrompt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/addContactDisplayNamePrompt"
+        android:layout_marginTop="30dip"
+        android:layout_marginLeft="10dip"
+        android:text="@string/addContactUriPrompt"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/addContactUriInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addContactUriPrompt"
+        android:ems="10"
+        android:lines="3"
+        android:inputType="textEmailAddress" />
+    
+    <Button
+        android:id="@+id/addContactSaveButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/addContactCancelButton"
+        android:onClick="saveContact"
+        android:text="@string/addContactSaveButton"
+        />
+
+    <Button
+        android:id="@+id/addContactCancelButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="cancelSave"
+        android:text="@string/addContactCancelButton"
+        />
+
+    <TextView
+        android:id="@+id/addContactUriInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addContactUriInput"
+        android:layout_alignLeft="@+id/addContactDisplayNameInput"
+        android:text="@string/addContactUriInfo"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+</RelativeLayout>

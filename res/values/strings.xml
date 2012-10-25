@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <!-- General -->
+    <string name="app_name">RCS Demo</string>
+    <!-- Splash / login screen -->
+    <string name="splashMessage">Welcome to the RCS chat demo</string>
+    <string name="splashProceed">Proceed</string>
+    <string name="splashVersion">Version 2.0 OMA Compliant</string>
+    <string name="splashStatusIndicatorText">enter username / password</string>
+    <!-- Main menu screen -->
+    <string name="contactEditDeleteText">Click and hold contact \nto edit or delete</string>
+    <string name="mainMenuAddContact">Add contact</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="newMessageArrived">* New *</string>
+    <string name="refreshContacts">Refresh contacts</string>
+    <string name="signOut">Sign out</string>
+    <!-- Instant messaging (person to person) -->
+    <string name="button_send">Send</string>
+    <string name="enter_message_hint">Enter message here...</string>
+    <string name="menu_settings">menu settings : not currently used</string>
+    <string name="isComposingEllipsis">...</string>
+    <!-- Add contact -->
+    <string name="addContactMesssage">Enter the details of the RCS contact below.</string>
+    <string name="addContactDisplayName">Display name</string>
+    <string name="addContactUriPrompt">Contact URI</string>
+    <string name="addContactSaveButton">Save contact</string>
+    <string name="addContactCancelButton">Cancel</string>
+    <string name="addContactUriInfo">tel: or sip: prefix required</string>
+    <!-- Edit contact -->
+    <string name="editContactMesssage">Change contact details for your RCS contact below.</string>
+    <string name="editContactDisplayName">Display name</string>
+    <string name="editContactUriPrompt">Contact URI</string>
+    <string name="editContactSaveButton">Save contact</string>
+    <string name="editContactCancelButton">Cancel</string>
+    <string name="editContactDeleteButton">Delete contact</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+	        
+    <Button
+        android:id="@+id/send_message"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="sendMessageClicked"
+        android:text="@string/button_send" />
+    
+    <TextView
+        android:id="@+id/isComposingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/send_message"
+        android:layout_alignTop="@+id/send_message"
+        android:layout_gravity="center"
+	    android:textAppearance="?android:attr/textAppearanceMedium"
+        android:padding="10dp"
+        android:text="@string/isComposingEllipsis"
+        android:visibility="visible" />
+    
+    <EditText
+        android:id="@+id/message_input_box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/send_message"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="left"
+        android:contentDescription="@string/enter_message_hint"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:minLines="3" >
+        <requestFocus/>
+    </EditText>
+	    
+    <LinearLayout
+        android:id="@+id/messageListHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/message_input_box"
+        >
+
+        <ListView
+            android:id="@+id/messageList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="#b5b5b5"
+            android:dividerHeight="1dp"
+            >
+
+        </ListView>
+    </LinearLayout>
+
+    
+</RelativeLayout>

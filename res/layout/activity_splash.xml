@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <LinearLayout
+        android:id="@+id/splashLogoWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:padding="3dip" >
+
+        <ImageView
+            android:id="@+id/splashLogoImage"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/splashMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splashLogoWrapper"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:hint="@string/splashMessage"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/splashUsernamePrompt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/splashMessage"
+        android:layout_marginTop="80dip"
+        android:layout_marginLeft="10dip"
+        android:text="Username"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/splashUsernameInput"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/splashUsernamePrompt"
+        android:layout_alignBottom="@+id/splashUsernamePrompt"
+        android:layout_toRightOf="@+id/splashUsernamePrompt"
+        android:ems="10"
+        android:text="+15555000"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+    
+    <TextView
+        android:id="@+id/splashPasswordPrompt"
+        android:layout_width="120dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/splashUsernamePrompt"
+        android:text="Password"
+        android:layout_marginTop="30dip"
+        android:layout_marginLeft="10dip"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/splashPasswordInput"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/splashPasswordPrompt"
+        android:layout_alignBottom="@+id/splashPasswordPrompt"
+        android:layout_toRightOf="@+id/splashPasswordPrompt"
+        android:ems="10"
+        android:inputType="textPassword" />
+    
+    <Button
+        android:id="@+id/splashProceedButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="proceedToMain"
+        android:text="@string/splashProceed"
+        />
+
+    <TextView
+        android:id="@+id/splashVersion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/splashProceedButton"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dip"
+        android:gravity="center"
+        android:text="@string/splashVersion"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/splashStatusIndicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/splashVersion"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/splashStatusIndicatorText"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="20dip"
+        />
+
+
+
+</RelativeLayout>

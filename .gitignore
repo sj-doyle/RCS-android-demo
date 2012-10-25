@@ -1,0 +1,12 @@
+bin/
+gen/
+4
+6
+d
+log
+emulator.sh
+com/
+scripts/
+*.swp
+.settings/
+*.old

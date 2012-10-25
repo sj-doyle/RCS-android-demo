@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:id="@+id/editContactMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dip"
+        android:gravity="center"
+        android:text="@string/editContactMesssage"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/editContactDisplayNamePrompt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editContactMessage"
+        android:layout_marginTop="80dip"
+        android:layout_marginLeft="10dip"
+        android:text="@string/editContactDisplayName"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editContactDisplayNameInput"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editContactDisplayNamePrompt"
+        android:layout_alignBottom="@+id/editContactDisplayNamePrompt"
+        android:layout_toRightOf="@+id/editContactDisplayNamePrompt"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+        
+    <Button
+        android:id="@+id/editContactSaveButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/editContactDeleteButton"
+        android:onClick="saveContact"
+        android:text="@string/editContactSaveButton"
+        />
+
+    <Button
+        android:id="@+id/editContactDeleteButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/editContactCancelButton"
+        android:onClick="deleteContact"
+        android:text="@string/editContactDeleteButton"
+        />
+    
+    <Button
+        android:id="@+id/editContactCancelButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="cancelSave"
+        android:text="@string/editContactCancelButton"
+        />
+    
+</RelativeLayout>
