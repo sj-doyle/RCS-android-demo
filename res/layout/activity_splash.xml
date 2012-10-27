@@ -52,7 +52,7 @@
         android:layout_alignBottom="@+id/splashUsernamePrompt"
         android:layout_toRightOf="@+id/splashUsernamePrompt"
         android:ems="10"
-        android:text="+15555000"
+        android:text="+1555400000"
         android:inputType="textPersonName" >
 
         <requestFocus />

@@ -33,7 +33,7 @@ public class SplashActivity extends Activity {
 	public static String userId=null;
 	
 //	public static String appCredentialUsername="NOUSER";
-	public static final String appCredentialPassword="#d2h<.]A";
+	public static final String appCredentialPassword="3Kvm4\"DD";
 	
 	static SplashActivity _instance=null;
 	
