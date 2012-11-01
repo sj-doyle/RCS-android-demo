@@ -23,7 +23,7 @@
         android:layout_toLeftOf="@+id/send_message"
         android:layout_alignTop="@+id/send_message"
         android:layout_gravity="center"
-	    android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:textAppearance="?android:attr/textAppearanceSmall"
         android:padding="10dp"
         android:text="@string/isComposingEllipsis"
         android:visibility="visible" />
@@ -60,6 +60,5 @@
 
         </ListView>
     </LinearLayout>
-
     
 </RelativeLayout>

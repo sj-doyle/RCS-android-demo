@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Utils {
-	private static SimpleDateFormat transferFormatter=new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+	private static SimpleDateFormat transferFormatter=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz"); //2012-11-01T20:17:07Z
 	private static SimpleDateFormat displayFormatter=new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
 	
     public static void CopyStream(InputStream is, OutputStream os)
@@ -50,6 +50,9 @@ public class Utils {
 		String value=original;
 		java.util.Date parsed;
 		try {
+			if ( original.endsWith( "Z" ) ) {
+				original = original.substring( 0, original.length() - 1) + "GMT-00:00";
+			}
 			parsed = transferFormatter.parse(original);
 			value=displayFormatter.format(parsed);
 		} catch (ParseException e) { 
@@ -94,10 +97,11 @@ public class Utils {
 			String[] parts=resourceURL.split("/");
 			boolean foundContactId=false;
 			boolean foundMessageId=false;
+			String encodedContactId=Utils.URLEncode(contactId);
 			for (int i=0; i<parts.length && !foundMessageId; i++) {
 				String part=parts[i];
 				if (part!=null) {
-					if (part.equalsIgnoreCase(contactId)) {
+					if (part.equalsIgnoreCase(contactId) || part.equalsIgnoreCase(encodedContactId)) {
 						foundContactId=true;
 					}
 					if (foundContactId && part.equalsIgnoreCase("messages") && i<(parts.length-1)) {

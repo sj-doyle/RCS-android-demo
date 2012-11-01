@@ -142,6 +142,9 @@ public class ChatSessionActivity extends Activity implements Runnable {
 		MainActivity.chatSessionClosed(destinationUri);
 	}
 	
+	/*
+	 * invoked when the user presses the button to send a message
+	 */
 	public void sendMessageClicked(View view) {
 		EditText messageInputBox=(EditText) findViewById(R.id.message_input_box);
 		final Editable text=messageInputBox.getText();
@@ -169,6 +172,9 @@ public class ChatSessionActivity extends Activity implements Runnable {
 		messageInputBox.setText("");
 	}
 	
+	/*
+	 * invoked when the list of messages needs to be restored from saved state
+	 */
 	public static boolean refreshMessageList(String contactUri, String recipient, ChatMessage chatMessage) {
 		boolean viewed=false;
 		if (recipient!=null && recipient.equals(SplashActivity.userId)) {
@@ -182,6 +188,9 @@ public class ChatSessionActivity extends Activity implements Runnable {
 		return viewed;
 	}
 	
+	/*
+	 * sends a message in ad-hoc mode
+	 */
 	private void sendAdhocMessage(String message, ChatMessage chatMessage) {
 		try {
 			final String url=ServiceURL.sendAdhocIMMessageURL(SplashActivity.userId, destinationUri);
@@ -230,6 +239,9 @@ public class ChatSessionActivity extends Activity implements Runnable {
 	}
 	
 
+	/*
+	 * background thread to deal with 'isComposing' indicator
+	 */
 	public void run() {
 		long lastSent=0;
 		
@@ -257,6 +269,9 @@ public class ChatSessionActivity extends Activity implements Runnable {
 		}
 	}
 	
+	/*
+	 * send the isComposing indicator (generic)
+	 */
 	private void sendComposingIndicator(String userId, String contactId, String state, int refresh, java.util.Date lastActive, String contentType) {
 		final String pingUrl=ServiceURL.getSendIsComposingAutomaticContactURL(SplashActivity.userId, contactId);
 		JSONObject isComposing=new JSONObject();
@@ -284,20 +299,32 @@ public class ChatSessionActivity extends Activity implements Runnable {
 		} catch (JSONException e) { }
 	}
 
+	/*
+	 * clear the isComposing indicator
+	 */
 	private void clearComposingIndicator() {
         sendComposingIndicator(SplashActivity.userId, destinationUri,"idle",15,new java.util.Date(), "text/plain");
         sentComposing=false;
 	}
 
+	/*
+	 * called on startup of the activity to set the state of the contact
+	 */
 	public static void setContactState(ContactState contactState) {
 		ChatSessionActivity.contactState=contactState;
 	}
 	
+	/*
+	 * called from the MainActivity when a message (send) status has been updated
+	 */
 	public static void updateStatus(String messageId, String status) {
 		ContactStateManager.updateStatusFor(messageId, status);
 		messageHandler.sendEmptyMessage(0);
 	}
 
+	/* 
+	 * called from the MainActivity when the isComposing indicator has been received
+	 */
 	public static void updateComposingIndicator(String state) {
 		int code=(state!=null && state.equalsIgnoreCase("active"))?1:0;
 		composingIndicatorHandler.sendEmptyMessage(code);

@@ -77,9 +77,9 @@ public class MainActivity extends Activity implements Runnable {
 	static String currentChatSessionContactUri=null;
 	
 	private static final int MAIN_LOOP_DELAY=5000;
+	private static final int LONGPOLL_TIMEOUT=30000;
 	
 	private static Vibrator v = null;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -285,8 +285,8 @@ public class MainActivity extends Activity implements Runnable {
 				DefaultHttpClient client = new DefaultHttpClient();
 				
 				HttpParams myParams = new BasicHttpParams();
-			    HttpConnectionParams.setConnectionTimeout(myParams, MAIN_LOOP_DELAY);
-			    HttpConnectionParams.setSoTimeout(myParams, MAIN_LOOP_DELAY);
+			    HttpConnectionParams.setConnectionTimeout(myParams, MAIN_LOOP_DELAY); 
+			    HttpConnectionParams.setSoTimeout(myParams, LONGPOLL_TIMEOUT);
 			    
 			    HttpPost httppost = new HttpPost(notificationsUrl);
 			    
@@ -315,10 +315,12 @@ public class MainActivity extends Activity implements Runnable {
 					Log.d("MainActivity", "JSONException handled");
 				}
 
-				try {
-					processNotificationResponse(statusCode, jsonData);
-				} catch (JSONException e) {
-					Log.d("MainActivity", "JSONException handled");
+				if (jsonData!=null) {
+					try {
+						processNotificationResponse(statusCode, jsonData);
+					} catch (JSONException e) {
+						Log.d("MainActivity", "JSONException handled");
+					}
 				}
 				
 			} else {
@@ -418,6 +420,37 @@ public class MainActivity extends Activity implements Runnable {
 						v.vibrate(200);
 					}
 
+				} else if (Utils.getJSONObject(notification, "chatSessionInvitationNotification")!=null) {
+					JSONObject chatSessionInvitationNotification=Utils.getJSONObject(notification, "chatSessionInvitationNotification");
+					JSONArray link=Utils.getJSONArray(chatSessionInvitationNotification, "link");
+					if (link!=null && link.length()>0) {
+						for (int li=0; li<link.length(); li++) {
+							JSONObject litem=link.getJSONObject(li);
+							String rel=Utils.getJSONStringElement(litem, "rel");
+							String href=Utils.getJSONStringElement(litem, "href");
+							
+							if ("ParticipantSessionStatus".equals(rel) && href!=null) {
+								AsyncHttpClient acceptClient = new AsyncHttpClient();
+						        AuthScope authscope=new AuthScope(ServiceURL.serverName, ServiceURL.serverPort, AuthScope.ANY_REALM);
+						        acceptClient.setBasicAuth(SplashActivity.userId, SplashActivity.appCredentialPassword, authscope);        
+								try {
+									StringEntity requestData = new StringEntity("{\"participantSessionStatus\":{\"status\":\"Connected\"}}");
+									acceptClient.put(_instance.getApplication().getApplicationContext(),
+							        		href, requestData, "application/json", new RCSJsonHttpResponseHandler() {
+							        	@Override
+							            public void onSuccess(String response, int errorCode) {
+							        		Log.d("MainActivity", "accept chatSessionInvitationNotification::success = "+response+" errorCode="+errorCode);
+							        	}
+							        	@Override
+							            public void onFailure(Throwable e, JSONObject response, int errorCode) {
+							        		Log.d("MainActivity", "accept chatSessionInvitationNotification::failure = "+response.toString()+" errorCode="+errorCode);
+							        	}
+									});
+								} catch (UnsupportedEncodingException e) {}										
+							}
+						}
+					}
+					
 				} else if (Utils.getJSONObject(notification, "sessionEventNotification")!=null) {
 					JSONObject sessionEventNotification=Utils.getJSONObject(notification, "sessionEventNotification");
 					String event=Utils.getJSONStringElement(sessionEventNotification, "event");
