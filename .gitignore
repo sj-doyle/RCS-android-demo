@@ -20,3 +20,8 @@ com/loopj/android/http/RequestParams.java
 com/loopj/android/http/RetryHandler.java
 com/loopj/android/http/SerializableCookie.java
 com/loopj/android/http/SimpleMultipartEntity.java
+AndroidProjector/adb
+AndroidProjector/android-projector
+AndroidProjector/android-projector.bat
+AndroidProjector/AndroidProjector.jar
+AndroidProjector/asm.jar
